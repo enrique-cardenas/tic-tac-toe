@@ -50,9 +50,12 @@ class Game extends Component {
       const desc = move ? 
         `Go to move # ${move} with location: (${step.col}, ${step.row})` :
         'Go to game start';
+
+      const buttonType = move === this.state.stepNumber ? "current-button" : "not-current-button";
+      
       return(
         <li key={move}>
-          <button onClick = {() => this.jumpTo(move)}>{desc}</button>
+          <button className={buttonType} onClick = {() => this.jumpTo(move)}>{desc}</button>
         </li>
       );
     });
