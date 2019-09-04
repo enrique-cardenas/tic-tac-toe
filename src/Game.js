@@ -12,6 +12,7 @@ class Game extends Component {
       }],
       stepNumber: 0,
       xIsNext: true,
+      moveOrder: "descending"
     };
   }
 
@@ -41,12 +42,18 @@ class Game extends Component {
     });
   }
 
+  reverseMoves() {
+    this.setState({
+      moveOrder: this.state.moveOrder === "descending" ? "ascending" : "descending"
+    });
+  }
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
-    const moves = history.map((step, move) => {
+    let moves = history.map((step, move) => {
       const desc = move ? 
         `Go to move # ${move} with location: (${step.col}, ${step.row})` :
         'Go to game start';
@@ -76,8 +83,9 @@ class Game extends Component {
 
         </div>
         <div className="game-info">
+          <button onClick={() => this.reverseMoves()}>{this.state.moveOrder}</button>
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <ol>{this.state.moveOrder === "descending" ? moves : moves.reverse()}</ol>
         </div>
       </div>
     );
