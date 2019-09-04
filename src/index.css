@@ -54,7 +54,3 @@ ol, ul {
 .current-button{
     font-weight: bold;
 }
-
-.not-current-button{
-    font-weight: 400;
-}
