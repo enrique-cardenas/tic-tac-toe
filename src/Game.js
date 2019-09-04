@@ -83,8 +83,10 @@ class Game extends Component {
 
         </div>
         <div className="game-info">
-          <button onClick={() => this.reverseMoves()}>{this.state.moveOrder}</button>
           <div>{status}</div>
+          <br/>
+          Current Moves Sorting:
+          <button className="toggle-button" onClick={() => this.reverseMoves()}>{this.state.moveOrder}</button>
           <ol>{this.state.moveOrder === "descending" ? moves : moves.reverse()}</ol>
         </div>
       </div>
