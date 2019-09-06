@@ -6,8 +6,10 @@ class Board extends Component {
     return (
         <Square
           key={i}
+          index={i}
           value={this.props.squares[i]}
           onClick={() => this.props.onClick(i)} 
+          winningMoves={this.props.winningMoves}
         />
     );
   }
