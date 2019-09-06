@@ -48,10 +48,12 @@ class Game extends Component {
     });
   }
 
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const { winner, winningMoves } = calculateWinner(current.squares);
+    
 
     let moves = history.map((step, move) => {
       const desc = move ? 
@@ -70,7 +72,11 @@ class Game extends Component {
     let status;
     if(winner){
       status = 'Winner: ' + winner;
-    } else{ 
+    } 
+    else if(this.state.history.length === 10){
+      status = 'Draw! No winners';
+    }
+      else{ 
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
     return (
