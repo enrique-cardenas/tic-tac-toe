@@ -7,8 +7,8 @@ class Game extends Component {
     this.state = {
       history: [{
         squares: Array(9).fill(null),
-        col: -1,
-        row: -1,
+        col: -1, // last column position
+        row: -1, // last row position
       }],
       stepNumber: 0,
       xIsNext: true,
@@ -76,7 +76,7 @@ class Game extends Component {
     else if(this.state.history.length === 10){
       status = 'Draw! No winners';
     }
-      else{ 
+    else{ 
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
     return (
